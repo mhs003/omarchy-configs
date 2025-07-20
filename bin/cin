@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+	echo "Usage: cin <filepath> [gcc options]"
+	exit
+fi
+
+if [ ! -f "$1" ]; then
+        echo "Usage: cin <filepath> [gcc options]"
+	echo -e "\e[1;31mPlease pass a valid file path in first argument\e[0m"
+	exit
+fi
+
+rndstr=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 10 | head -n 1)
+
+gcc $@ -o /tmp/.$1.$rndstr.bin
+if [ $? -ne 0 ]; then
+	exit
+fi
+/tmp/.$1.$rndstr.bin
+rm /tmp/.$1.$rndstr.bin
