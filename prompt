@@ -11,4 +11,4 @@ PS1='\[\e[0m\]\[\e[1;33m\]$HPWD\[\e[0m\] '
 
 alias cr='source ~/.bashrc && echo "refreshing shell..."'
 
-export PATH=/home/void/.config/hypr/bin:$PATH
+export PATH=~/.config/hypr/bin:$PATH
